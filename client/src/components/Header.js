@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
 
@@ -14,9 +14,12 @@ class Header extends Component {
                     <li><a href="/auth/google">Login With Google</a></li>
                 )
             default:
-                return [
-                    <li><Payments /></li>,
-                <li><a href="/api/logout">Log out!</a></li>];
+                return <React.Fragment>
+
+                    <li key="2"><Payments /></li>
+                    <li key="3" style={{ "margin": "0 10px", "hover": "red" }}>Credits: {this.props.auth.credits}</li>
+                    <li key="1"><a href="/api/logout">Log out!</a></li>
+                </React.Fragment>
         }
     }
 
